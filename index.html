@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Hora Atual</title>
+</head>
+<body>
+    <div class="container">
+        <span>Hora Certa: </span><strong class="hora"></strong>
+    </div>
+
+    <script>
+        setInterval(function(){
+            // Pegando a strong onde será exibido o horário atual
+            const hora = document.querySelector('.hora');
+
+            // Recebendo os valores do horário atual
+            const currentDate = new Date();
+            let seconds = currentDate.getSeconds();
+            let minutes = currentDate.getMinutes();
+            let hours = currentDate.getHours();
+
+            // Formatar valores
+            seconds = formattedValue(seconds);
+            minutes = formattedValue(minutes);
+            hours = formattedValue(hours);
+
+            hora.textContent = hours+'  :  '+minutes+'  :  '+seconds
+        },1000)
+
+        function formattedValue(value){
+            if(value < 10){
+                return '0'+value;
+            }else{
+                return value
+            }
+        }
+    </script>
+</body>
+</html>
